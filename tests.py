@@ -24,7 +24,6 @@ class KPFTests(unittest.TestCase):
 		.endpatch"""))
 		self.assertEqual(len(patches),1)
 		patch = patches[0]
-		print(patch)
 		self.assertEqual(patch.name,"NOP the check for XYZ encoding")
 		self.assertIsNone(patch.hash)
 		self.assertEqual(patch.records[0].address,0x3033)
