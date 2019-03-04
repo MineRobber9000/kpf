@@ -1,4 +1,4 @@
-import re
+import re, copy
 from kpf.fsm import FiniteStateMachine
 from hashlib import sha256 as __sha256
 
@@ -94,6 +94,7 @@ class Patch:
 				pass
 	def apply(self,b):
 		if self.hash and sha256(b)!=self.hash: raise IncorrectFileHashException()
+		b = copy.copy(b)
 		for record in self.records:
 			b = record.apply(b)
 		return b
