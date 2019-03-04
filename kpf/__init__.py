@@ -1,4 +1,4 @@
-from kpf.patch import Patch,Record
+from kpf.patch import Patch,Record,sha256
 
 def parse(text):
 	patches = Patch.fromText(text)
