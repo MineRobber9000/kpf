@@ -16,6 +16,7 @@ class IncorrectFileHashException(Exception):
 class Record:
 	"""A record. Has an address, value, and sometimes a compare value for run-time patching."""
 	FORMAT = r"([0-9A-Fa-f]+)=(?:0x)?([0-9A-Fa-f]{2,2})"
+	FORMAT_OUT = "{address:08X}={value:02X}"
 	FIELDS = "address value".split()
 	FORMAT_NAME = "Base record"
 	def __init__(self,**kwargs):
@@ -33,6 +34,9 @@ class Record:
 		if self.compare and self.compare!=b[self.address]: return
 		b[self.address]=self.value
 		return b
+	@property
+	def text(self):
+		return self.FORMAT_OUT.format(**({x: getattr(self,x) for x in self.FIELDS+(["compare"] if hasattr(self,"_compare") else [])}))
 
 def re_preproc(r):
 	m = list(r)
@@ -93,3 +97,12 @@ class Patch:
 		for record in self.records:
 			b = record.apply(b)
 		return b
+	@property
+	def text(self):
+		ret = [".patch"]
+		ret.append(".name "+self.name)
+		if self.hash: ret.append(".hash "+self.hash)
+		for record in self.records:
+			ret.append(record.text)
+		ret.append(".endpatch")
+		return "\n".join(ret)
