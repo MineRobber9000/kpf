@@ -24,6 +24,6 @@ kpf files can contain more than one patch, allowing for customization.
 
 ## Reference implementation ##
 
-Eventually, this repo will be used to host the reference implementation of the KPF format.
+This repo is used to host the reference implementation of the KPF format.
 
-A proper explanation of the format will exist in KPF.md eventually.
+A proper specification of the file format can be found in [KPF.md](//github.com/MineRobber9000/kpf/blob/master/KPF.md).
