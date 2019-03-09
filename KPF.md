@@ -45,3 +45,4 @@ I personally think it's quite obvious which is easier to read. (For the human, a
 4. Patch objects MAY have a line stating a file hash. This line is in the format of ".filehash <hash>". The hash algorithm supported is SHA-256.
 5. Patch objects MUST contain at least one record. They MAY contain more than one.
 6. Direct one-to-one byte changes can be given using the format "<address>=<val>". The spec is currently missing multi-byte changes and RLE-encoded changes. These will be added in a later version of the spec.
+7. Lines outside of the ".patch"/".endpatch" combo MUST be ignored.
