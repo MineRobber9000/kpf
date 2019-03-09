@@ -1,4 +1,4 @@
-# kpf v0.1.0 Spec
+# kpf v0.2.0 Spec
 
 kpf is a specification for patch files. These files define modifications to be made to a binary file, usually a game ROM.
 
